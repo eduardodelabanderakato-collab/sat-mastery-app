@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAT Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=dcf29171">
+</head>
+<body>
+  <div id="app" aria-live="polite">
+    <p class="boot">Loading the bank…</p>
+  </div>
+  <script>
+    // Set before the first paint, or the page flashes the other theme.
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("sat-mastery.theme.v1") || "light";
+    } catch {
+      document.documentElement.dataset.theme = "light";
+    }
+    if (location.hash === "#reset") {
+      for (const key of ["sat-mastery.v1", "sat-mastery.session.v1", "sat-mastery.highlights.v1", "sat-mastery.scores.v1"]) {
+        try { localStorage.removeItem(key); } catch {}
+      }
+    }
+  </script>
+  <script type="module" src="app/main.js?v=dcf29171"></script>
+</body>
+</html>
